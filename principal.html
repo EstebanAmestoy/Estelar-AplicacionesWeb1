@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estelar DJ</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <aside class="sidebar">
+        <h1 class="logo">ESTELAR DJ</h1>
+        <nav>
+            <a onclick="showCategory('controladoras')"><i class="fa-solid fa-sliders"></i> CONTROLADORAS</a>
+            <a onclick="showCategory('auriculares')"><i class="fa-solid fa-headphones"></i> AURICULARES</a>
+            <a onclick="showCategory('microfonos')"><i class="fa-solid fa-microphone"></i> MICROFONOS</a>
+            <a onclick="showCategory('preamp')"><i class="fa-solid fa-wave-square"></i> PRE AMPLIFICADORES</a>
+            <a onclick="showCategory('cables')"><i class="fa-solid fa-plug"></i> CABLES</a>
+            <a onclick="showCategory('protectores')"><i class="fa-solid fa-plug"></i> PROTECTORES</a>
+            <a onclick="showCategory('accesorios')"><i class="fa-solid fa-plug"></i> ACCESORIOS</a>    
+        </nav>
+    </aside>
+    <main class="main-content">
+
+        <div class="top-bar center">
+             <h2>BIENVENIDO A ESTELAR DJ</h2>
+
+             <div class="cart-icon" onclick="toggleCart()">
+                <i class="fa-solid fa-cart-shopping"></i>
+                 <span id="cart-count">0</span>
+             </div>
+        </div>
+            <div class="product-card" data-category="controladoras">
+                <img src="https://via.placeholder.com/200">
+                <h3>CONTROLADORA DJ PRO</h3>
+                <p>$500</p>
+                <button onclick="addToCart('Controladora DJ Pro')">AGREGAR</button>
+        </div>
+
+        <div class="product-card" data-category="auriculares">
+            <img src="https://via.placeholder.com/200">
+            <h3>AURICULARES STUDIO</h3>
+            <p>$150</p>
+            <button onclick="addToCart('Auriculares Studio')">AGREGAR</button>
+        </div>
+
+        <div class="product-card" data-category="microfonos">
+            <img src="https://via.placeholder.com/200">
+            <h3>MICRÓFONO PROFESIONAL</h3>
+            <p>$200</p>
+            <button onclick="addToCart('Micrófono Profesional')">AGREGAR</button>
+        </div>
+
+        <div class="product-card" data-category="preamp">
+            <img src="https://via.placeholder.com/200">
+            <h3>PRE AMPLIFICADOR AUDIO</h3>
+            <p>$300</p>
+            <button onclick="addToCart('Pre Amplificador Audio')">AGREGAR</button>
+       </div>
+
+        <div class="product-card" data-category="cables">
+            <img src="https://via.placeholder.com/200">
+            <h3>CABLE XLR PREMIUM</h3>
+            <p>$50</p>
+            <button onclick="addToCart('Cable XLR Premium')">AGREGAR</button>
+        </div>
+
+    </section>
+    </main>
+    <div class="cart-panel" id="cartPanel">
+         <div class="cart-header">
+            <h3>MI CARRITO</h3>
+             <i class="fa-solid fa-xmark" onclick="toggleCart()"></i>
+         </div>
+
+         <ul id="cart-items"></ul>
+
+         <div class="cart-total">
+             <h3>Total: $<span id="cart-total">0</span></h3>
+         </div>
+
+         <button class="checkout-btn">FINALIZAR COMPRA</button>
+    </div>
+    <script>
+    let count = 0;
+    let total = 0;
+
+    const prices = {
+        "Controladora DJ Pro": 500,
+        "Auriculares Studio": 150,
+        "Micrófono Profesional": 200,
+        "Pre Amplificador Audio": 300,
+        "Cable XLR Premium": 50,
+        "Protector de equipo": 80
+    };
+
+    function addToCart(producto) {
+        count++;
+        document.getElementById("cart-count").innerText = count;
+
+        let price = prices[producto] || 0;
+        total += price;
+
+        document.getElementById("cart-total").innerText = total;
+
+        let item = document.createElement("li");
+        item.innerHTML = `
+            ${producto} - $${price}
+            <button onclick="removeItem(this, ${price})">❌</button>
+        `;
+
+        document.getElementById("cart-items").appendChild(item);
+    }
+
+    function removeItem(button, price) {
+        button.parentElement.remove();
+        count--;
+        total -= price;
+
+        document.getElementById("cart-count").innerText = count;
+        document.getElementById("cart-total").innerText = total;
+    }
+
+    function toggleCart() {
+        document.getElementById("cartPanel").classList.toggle("active");
+    }
+</script>
+<script>
+function showCategory(category) {
+    const products = document.querySelectorAll('.product-card');
+
+    products.forEach(product => {
+        if (product.getAttribute('data-category') === category) {
+            product.style.display = "block";
+        } else {
+            product.style.display = "none";
+        }
+    });
+}
+</script>
+
+</body>
+</html>
