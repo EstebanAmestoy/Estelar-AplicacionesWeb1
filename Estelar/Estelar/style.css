@@ -153,6 +153,8 @@ body {
     border-right: 1px solid rgba(255, 255, 255, 0.05);
     padding: 50px 25px;
     z-index: 10;
+    display: flex;
+    flex-direction: column;
 }
 
 .logo {
@@ -165,6 +167,10 @@ body {
     letter-spacing: 2px;
     text-transform: uppercase;
     text-shadow: 0 0 25px rgba(255, 170, 0, 0.4);
+}
+
+.sidebar nav {
+    flex-grow: 1;
 }
 
 .sidebar nav a {
@@ -296,6 +302,8 @@ body {
     text-align: center;
     backdrop-filter: blur(10px);
     transition: 0.4s;
+    display: flex;
+    flex-direction: column;
 }
 
 .product-card:hover {
@@ -308,7 +316,7 @@ body {
 .product-card img {
     width: 100%;
     height: 200px;
-    object-fit: contain;
+    object-fit: cover; /* Cambiado a cover para fotos reales */
     border-radius: 15px;
     margin-bottom: 20px;
 }
@@ -425,4 +433,199 @@ button:hover {
     .cart-panel { 
         width: 100%; 
     }
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 10px;
+}
+
+.user-profile-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.user-profile-item:hover {
+    background: rgba(255, 170, 0, 0.05);
+    border-color: var(--naranja-vibrante);
+}
+
+.avatar-small {
+    width: 40px;
+    height: 40px;
+    background: var(--naranja-quemado);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 12px;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: white;
+}
+
+.logout-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    background: transparent;
+    border: 1px solid var(--naranja-quemado);
+    color: var(--naranja-vibrante);
+    border-radius: 50px;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s all ease;
+    cursor: pointer;
+}
+
+.logout-link i {
+    margin-right: 10px;
+}
+
+.logout-link:hover {
+    background: var(--naranja-quemado);
+    color: white;
+    box-shadow: 0 0 15px rgba(211, 84, 0, 0.3);
+}
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-card {
+    background: var(--fondo-oscuro);
+    border: 1px solid var(--naranja-vibrante);
+    border-radius: 20px;
+    width: 350px;
+    padding: 30px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+}
+
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.profile-section label {
+    display: block;
+    color: var(--naranja-vibrante);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.profile-section p {
+    margin-bottom: 20px;
+    font-weight: 400;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+}
+
+.quantity-control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 5px;
+    border-radius: 50px;
+}
+
+.quantity-control button {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    background: var(--naranja-vibrante);
+    color: #000;
+    border-radius: 50%;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.quantity-control span {
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+}
+
+.delete-item-btn {
+    background: transparent;
+    color: #ff4d4d;
+    width: auto;
+    padding: 5px 10px;
+    font-size: 1rem;
+}
+
+.delete-item-btn:hover {
+    background: rgba(255, 77, 77, 0.1);
+    box-shadow: none;
+    color: #ff1a1a;
+}
+
+.item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    margin-bottom: 8px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+@keyframes bump {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+.bump-animation {
+    animation: bump 0.3s ease-out;
 }
